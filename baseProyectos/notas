@@ -1,0 +1,11 @@
+*package.json
+  "main": "src/app.js" - Para ejecutar directamente nodemon app.js
+  "scripts": {"start": "node app.js"} - Preparado para subir a Heroku
+  4 dependencias a instalar con npm i (express - normalize - ejs - nodemon)
+
+*guias-ejecucionales.txt - para copiar las consignas y tenerlas a mano
+
+*gitignore - no suba la carpeta node_modules al repo
+
+*app.js
+
