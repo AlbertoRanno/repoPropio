@@ -79,3 +79,11 @@ Errores de los clientes (400–499),
 y errores de los servidores (500–599).
 
 ej..404 Not Found  -  El servidor no pudo encontrar el contenido solicitado. 
+
+*Mostrar algo de forma dinámica:
+-etiquetas correrspondientes para mechar con java:
+<% for (let i = 1; i <= 10; i++) { %>
+ 
+<% } %>
+-etiquetas para ser impreso de forma literal en el ejs:
+<%= %> 

@@ -1,1 +1,22 @@
-corregir msjs de error en cada caso: no todos son status(200) / 
+corregir msjs de error en cada caso: no todos son status(200) /
+
+<div>
+  <ul>
+    <% for (let i = 1; i <= 10; i++) { %> <% if ( i % 2 == 0) { %>
+    <li class="par">Soy el item numero <%= i %></li>
+    <% } else { %>
+    <li class="impar">Soy el item numero <%= i %></li>
+    <% } %> <% } %>
+  </ul>
+</div>
+
+.par { border: #4caf50 4 px solid; font-size: xx-large; } 
+.impar { border:rebeccapurple 4 px solid; color: #009688; }
+
+
+  <!-- Por que no anda así?? catch es por falta de simbolo de apertura o cierre??
+    porque es listadoDePlatos.length!!
+    o ponerle a ambos solamente platos!!
+          <% for (let i = 0; i < platos.length; i++) { %>
+          <li><%= platos[i] %></li>
+          <% } %>-->

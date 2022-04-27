@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-   
-<%- include('partials/head.ejs')%>
+  <%- include('partials/head.ejs')%>
   <body>
     <!-- Navbar (sit on top) -->
     <nav class="ps-top">
@@ -11,13 +9,13 @@
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="ps-right ps-hide-small">
           <a href="#about" class="ps-bar-item ps-button">About</a>
-          <a href="#menu" class="ps-bar-item ps-button">Menu</a>
+          <a href="/menu" class="ps-bar-item ps-button">Menu</a>
         </div>
       </div>
     </nav>
 
     <!-- Header -->
-   <%- include('partials/header.ejs')%>
+    <%- include('partials/header.ejs')%>
 
     <!-- Page content -->
     <div class="ps-content">
@@ -59,31 +57,15 @@
       <!-- Menu Section -->
       <div class="ps-row ps-padding-64" id="menu">
         <div class="ps-col l6 ps-padding-large">
-          <h1 class="ps-center">Nuentro Menu</h1>
+          <h1 class="ps-center">Nuestro Menu</h1>
           <br />
-          <h4>Carpaccio fresco</h4>
+          <% for (let platos of listadoDePlatos) { %>
+          <h4><%= platos.nombre%></h4>
           <p class="ps-text-grey">
-            Entrada Carpaccio de salmón con cítricos U$S 65.50
+            <%= platos.descripcion%> U$S <%= platos.precio%>
           </p>
           <br />
-
-          <h4>Risotto de berenjena</h4>
-          <p class="ps-text-grey">
-            Risotto de berenjena y queso de cabra U$S 47.00
-          </p>
-          <br />
-
-          <h4>Mousse de arroz</h4>
-          <p class="ps-text-grey">
-            Mousse de arroz con leche y aroma de azahar U$S 27.50
-          </p>
-          <br />
-
-          <h4>Espárragos blancos</h4>
-          <p class="ps-text-grey">
-            Espárragos blancos con vinagreta de verduras y jamón ibérico U$S
-            37.50
-          </p>
+          <% } %>
         </div>
 
         <div class="ps-col l6 ps-padding-large ps-img-menu">
