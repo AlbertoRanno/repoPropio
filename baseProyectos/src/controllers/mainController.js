@@ -1,6 +1,6 @@
 const mainController = {
   index: (req, res) => {
-    res.render('index');
+    res.status(200).render("index");
   },
 };
 
