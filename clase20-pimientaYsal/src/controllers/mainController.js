@@ -1,12 +1,6 @@
 const mainController = {
   index: (req, res) => {
-    res.status(200).render("index", { listadoDePlatos: platos });
-  },
-};
-
-module.exports = mainController;
-
-const platos = [
+    res.status(200).render("index", { listadoDePlatos: [
   {
     idMenu: 1,
     nombre: "Carpaccio fresco",
@@ -36,6 +30,12 @@ const platos = [
     precio: 37.5,
     imagen: "images/esparragos.jpg",
   },
-];
+] });
+  },
+};
+
+module.exports = mainController;
+
+
 
 
