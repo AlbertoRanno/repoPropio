@@ -20,3 +20,6 @@ corregir msjs de error en cada caso: no todos son status(200) /
           <% for (let i = 0; i < platos.length; i++) { %>
           <li><%= platos[i] %></li>
           <% } %>-->
+
+  por que se rompe si exporto platos desde controller?? 
+  (no conecta con el metodo de la ruta)

@@ -1,10 +1,10 @@
-const mainController = {
-  index: (req, res) => {
-    res.status(200).render("index", { listadoDePlatos: platos });
+const platosController = {
+  detalleMenu: (req, res) => {
+    res.status(200).render("detalleMenu", { listadoDePlatos: platos });
   },
 };
+module.exports = platosController;
 
-module.exports = mainController;
 
 const platos = [
   {

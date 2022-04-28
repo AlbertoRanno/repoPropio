@@ -9,7 +9,7 @@
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="ps-right ps-hide-small">
           <a href="#about" class="ps-bar-item ps-button">About</a>
-          <a href="/menu" class="ps-bar-item ps-button">Menu</a>
+          <a href="#menu" class="ps-bar-item ps-button">Menu</a>
         </div>
       </div>
     </nav>
@@ -60,7 +60,9 @@
           <h1 class="ps-center">Nuestro Menu</h1>
           <br />
           <% for (let platos of listadoDePlatos) { %>
-          <h4><%= platos.nombre%></h4>
+          <a href="/plato/">
+            <h4><%= platos.nombre%></h4>
+          </a>
           <p class="ps-text-grey">
             <%= platos.descripcion%> U$S <%= platos.precio%>
           </p>

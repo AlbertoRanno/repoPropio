@@ -4,8 +4,12 @@ app.use(express.static("public"));
 
 //routes imports
 const rutasMain = require("./routes/main.js");
+const rutasPlatos = require("./routes/platos.js");
 
+//índice
 app.use("/", rutasMain);
+app.use("/plato/:idPlato?", rutasPlatos);
+
 
 //template engine
 app.set('view engine', 'ejs');

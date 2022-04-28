@@ -32,8 +32,8 @@
 
       <div class="ps-row ps-padding-64" id="menu">
         <div class="-col l6 ps-padding-large">
-          <% for (let i = 0; i < 1; i++) { %>
-          <h1 class="ps-center"><%= listadoDePlatos[i].nombre %></h1>
+         
+          <h1 class="ps-center"><%= listadoDePlatos.nombre %></h1>
           <br />
           <h4>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -51,15 +51,16 @@
             consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
             pariatur?
           </h4>
-          <p class="ps-text-grey">U$S <%= listadoDePlatos[i].precio %></p>
+          <p class="ps-text-grey">U$S <%= listadoDePlatos.precio %></p>
           <div class="ps-col l6 ps-padding-large ps-img-menu">
-          <div class="ps-round ps-image ps-opacity-min">
-            
-            <%= listadoDePlatos[i].imagen %>
-            </div>
-         
+          <img
+            src= <%= listadoDePlatos.imagen %>
+            class="ps-round ps-image ps-opacity-min"
+            alt="Menu"
+          />
+        </div>               
         </div>
-          <% } %>
+       
         </div>
 
         <!--
