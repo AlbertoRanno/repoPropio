@@ -8,7 +8,7 @@ const rutasPlatos = require("./routes/platos.js");
 
 //índice
 app.use("/", rutasMain);
-app.use("/plato/:idPlato?", rutasPlatos);
+app.use("/plato", rutasPlatos);
 
 
 //template engine
