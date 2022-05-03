@@ -1,0 +1,81 @@
+*package.json
+ -"main": "src/app.js" - Para ejecutar directamente nodemon app.js
+ -"scripts": {"start": "node app.js"} - Preparado para subir a Heroku
+ -4 dependencias a instalar con npm i (express - normalize - ejs - nodemon)
+
+*guias-ejecucionales.txt - para copiar las consignas y tenerlas a mano
+
+*gitignore - no suba la carpeta node_modules al repo
+
+*app.js
+ -express - requerido y ejecutado para transformar la pc en un servidor
+ -el método static de express sobre la carpeta public, para indicarle al controlador,
+ que es contenido que puede compartir con la vista
+ -listen, para tener el servidor escuchando en el puerto que se la pasa como parámetro.
+ -process.env.PORT, para darle otras opciones distintas a ese puerto (requerido para heroku)
+ -el console.log no es obligatorio, pero si una buena práctica.
+ -app.set('view engine', 'ejs') - para activar el template engine, y poder usar java en los ejs/html.
+ ademas de usar partials para no repetir código, y editar todo junto.
+ -app.set('views', __dirname + '/views') - para aclararle a ejs que la carpeta views está dentro de la
+ carpeta src (por default sino la va a buscar a la raíz). __dirname es una variable de node que 
+ muestra la dirección donde se escribe la variable (chequeas con console.log(__dirname))
+ -app.use("/", rutasMain) - que es un índice.. le dice al controlador, que cuando el cliente ingrese
+ en la dirección del primer parámetro, lo derive a la ruta especificada en el 2do parámetro.
+ -routes imports - para lograr lo anterior, routes imports, le indica donde está el archivo con la 
+ correspondiente ruta
+
+ *index.ejs
+ -<%- include('partials/head.ejs')%> indica que ahí irá lo que haya en el partial "head"
+
+ *head.ejs
+ -"UTF-8" - toma los símbolos, como los acentos y las ñ
+ -<meta name="viewport" content="width=device-width, initial-scale=1.0" /> - indica responsive
+ -<link rel="icon" href="images/imagen.png" /> - loguito de la solapa
+ -"https://kit.fontawesome.com/445d982738.js" - para descargar estilos de fuentes
+ -<link rel="stylesheet" href="/css/normalize.css" /> - vincula a normalize
+ -<link rel="stylesheet" href="/css/styles.css" /> - vincula a mi hoja de estilo
+ -<title>Título</title> - nombre en la solapa
+
+ *footer.ejs - el div por fuera es para situarlo bien el fondo de la página mediante css:
+.footer-father {
+  position: relative;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: top;
+  justify-content: space-around;
+}
+
+*routes
+- express y el método Router() para guiar al controlador.
+Osea, acorde a la dirección que puso el cliente en el navegador, el controlador busca en el índice
+de app.js, ese índice lo derivó a este archivo de rutas, y acorde a la ruta que le corresponda,
+lo derivará al método del controlador correspondiente, ejemplo el index, del main controller.
+ahí verá cual es la condición a ejecutar entonces acorde a la ruta que siguió.
+router.get("/", mainController.index )
+-get es porque se están solicitando datos
+
+*controllers
+-los controladores son objetos literales. Éstos van a almacenar los distintos métodos, es decir, las 
+consecuencias que van a ejecutar acorde a la propiedad a la que llegó la ruta
+const mainController = {index: (req, res) => {res.render('index')}}; - el método index, va a renderizar
+(mostrar graficamente), la vista index (el ejs ex-html). Ojo que puede ser necesario indicarle
+la ruta dentro del render ejemplo.. render("products/productDetail") si es que el productDetail, se
+encuentra en subcarpeta "products", de "views"
+
+*Los códigos de estado de respuesta HTTP - status(xxx)
+https://developer.mozilla.org/es/docs/Web/HTTP/Status
+Respuestas informativas (100–199),
+Respuestas satisfactorias (200–299),
+Redirecciones (300–399),
+Errores de los clientes (400–499),
+y errores de los servidores (500–599).
+
+ej..404 Not Found  -  El servidor no pudo encontrar el contenido solicitado. 
