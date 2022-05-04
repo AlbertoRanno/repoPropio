@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <h1>User List</h1>
+    <ul>
+      <% for (let i = 0; i < users.length; i++) { %>
+      <li>
+        <a href="/users/detail/<%= users[i].id %> ">
+          <%= users[i].name %></a
+        >
+      </li>
+      <% } %>
+    </ul>
+    <h2>Search</h2>
+    <form action="/users/search" method="get">
+      <input type="text" name="search">
+      <input type="submit" value="search">
+    </form>
+  </body>
+</html>

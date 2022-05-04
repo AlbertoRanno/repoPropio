@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head.ejs')%>
+  <body>
+    <%- include('partials/header.ejs')%>
+    <main>
+      <h2>Bienvenido al Home</h2>
+      <h2>Search</h2>
+        <form action="/users/search" method="get">
+          <input type="text" name="search">
+          <input type="submit" value="search">
+        </form>
+    </main>
+   <%- include('partials/footer.ejs')%>
+  </body>
+</html>
