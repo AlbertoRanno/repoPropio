@@ -1,27 +1,27 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const productsFilePath = path.join(__dirname, "../data/productsDataBase.json");
+const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
   index: (req, res) => {
-    res.status(200).render("index");
+    let inSale = products.filter((product) => product.category == "in-sale");
+    let visited = products.filter((product) => product.category == "visited");
+    res.status(200).render("index", { inSale: inSale, visited: visited });
   },
   search: (req, res) => {
     let loQueBuscoElUsuario = req.query.keywords;
-    let usersResults = [];
-    for (let i = 0; i < users.length; i++) {
+    let productsResults = [];
+    for (let i = 0; i < products.length; i++) {
       if (products[i].name.includes(loQueBuscoElUsuario)) {
-        usersResults.push(products[i]);
+        productsResults.push(products[i]);
       }
     }
-    res.status(200).render("results", { usersResults: usersResults });
+    res.status(200).render("results", { productsResults: productsResults });
   },
 };
 
 module.exports = controller;
-
-
