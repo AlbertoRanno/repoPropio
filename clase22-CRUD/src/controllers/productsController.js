@@ -9,12 +9,15 @@ const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const controller = {
   // Root - Show all products
   index: (req, res) => {
-    res.status(200).render("products", {products: products});
+    res.status(200).render("products", { products: products });
   },
 
   // Detail - Detail from one product
   detail: (req, res) => {
-    res.status(200).render("detail", { products: products });
+    let elDetallado = products.filter((product) => product.id == req.params.id);
+    console.log(elDetallado);
+
+    res.status(200).render("detail", { elDetallado: elDetallado[0] });
   },
 
   // Create - Form to create
@@ -46,11 +49,10 @@ const controller = {
 
   // Delete - Delete one product from DB
   destroy: (req, res) => {
-    let idProduct=req.params.id;
-    filteredProducts = products.filter(product=>product.id !== idProduct);
+    let idProduct = req.params.id;
+    filteredProducts = products.filter((product) => product.id !== idProduct);
     res.send(filteredProducts);
   },
 };
 
 module.exports = controller;
-
