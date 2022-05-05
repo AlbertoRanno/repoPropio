@@ -40,7 +40,9 @@ const controller = {
 
   // Update - Form to edit
   edit: (req, res) => {
-    res.status(200).render("product-edit-form", { products: products });
+    let elEditado = products.filter((product) => product.id == req.params.id);
+    console.log(elEditado);
+    res.status(200).render("product-edit-form", { elEditado: elEditado[0] });
   },
   // Update - Method to update
   update: (req, res) => {

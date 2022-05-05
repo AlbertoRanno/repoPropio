@@ -18,9 +18,14 @@ const controller = {
     for (let i = 0; i < products.length; i++) {
       if (products[i].name.includes(loQueBuscoElUsuario)) {
         productsResults.push(products[i]);
-      }
+      } 
     }
-    res.status(200).render("results", { productsResults: productsResults });
+    res
+      .status(200)
+      .render("results", {
+        productsResults: productsResults[0],
+      
+      });
   },
 };
 
