@@ -34,8 +34,8 @@ const controller = {
       category: req.body.category,
       description: req.body.description,
     };
-    //res.send(product) //Aun Falta Guardar la información, pero guardada o no, lo redirijo a la lista
-    res.redirect("products");
+    res.send(product) //Aun Falta Guardar la información, pero guardada o no, lo redirijo a otra vista
+    //res.redirect("products");
   },
 
   // Update - Form to edit
