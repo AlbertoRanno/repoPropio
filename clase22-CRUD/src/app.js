@@ -6,12 +6,13 @@ const logger = require('morgan');
 const path = require('path');
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 
+
 // ************ express() - (don't touch) ************
 const app = express();
 
 // ************ Middlewares - (don't touch) ************
 app.use(express.static(path.join(__dirname, '../public')));  // Necesario para los archivos estáticos en el folder /public
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); //permite procesar los formularios
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
