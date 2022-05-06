@@ -34,7 +34,9 @@ const controller = {
       category: req.body.category,
       description: req.body.description,
     };
+    console.log(req.files); // devuelve un objeto con la información del archivo
     res.send(product); //Aun Falta Guardar la información, pero guardada o no, lo redirijo a otra vista
+    //res.send("Archivo subido correctamente")
     //res.redirect("index");
   },
 
