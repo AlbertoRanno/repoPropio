@@ -34,26 +34,37 @@ const controller = {
       category: req.body.category,
       description: req.body.description,
     };
-    res.send(product) //Aun Falta Guardar la información, pero guardada o no, lo redirijo a otra vista
-    //res.redirect("products");
+    res.send(product); //Aun Falta Guardar la información, pero guardada o no, lo redirijo a otra vista
+    //res.redirect("index");
   },
 
   // Update - Form to edit
   edit: (req, res) => {
-    let elEditado = products.filter((product) => product.id == req.params.id);
-    console.log(elEditado);
-    res.status(200).render("product-edit-form", { elEditado: elEditado[0] });
+    let productToEdit = products.filter(
+      (product) => product.id == req.params.id
+    );
+    console.log(productToEdit);
+    res
+      .status(200)
+      .render("product-edit-form", { productToEdit: productToEdit[0] });
   },
   // Update - Method to update
   update: (req, res) => {
-    // Do the magic
+    let productToEdit = products.filter(
+      (product) => product.id == req.params.id
+    );
+    console.log(productToEdit);
+    res.status(200).send(productToEdit);
+    //res.redirect("index");
   },
 
   // Delete - Delete one product from DB
   destroy: (req, res) => {
     let idProduct = req.params.id;
     filteredProducts = products.filter((product) => product.id !== idProduct);
-    res.send(filteredProducts);
+    //res.send(filteredProducts);
+    res.send("me eliminaste");
+    //res.redirect("index");
   },
 };
 
