@@ -26,8 +26,11 @@
 							<img src="/images/products/<%= visited[i].image %>" alt="imagen de producto">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= visited[i].price %></h2>  <!--Final Price-->
-							<span><%= visited[i].discount %> % OFF </span>
+							<h2><%= (visited[i].price - (visited[i].price*visited[i].discount/100)) %></h2>  <!--Final Price-->
+							<span>
+								<% if (visited[i].discount !== 0) { %>
+								<%= visited[i].discount %> % OFF
+							<% } %>    </span>
 							<p><%= visited[i].name %></p>
 							<i class="fas fa-truck"></i>
 						</article>

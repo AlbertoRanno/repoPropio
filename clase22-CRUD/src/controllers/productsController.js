@@ -27,17 +27,25 @@ const controller = {
 
   // Create -  Method to store
   store: (req, res) => {
-    let product = {
-      name: req.body.name,
-      price: req.body.price,
-      discount: req.body.discount,
-      category: req.body.category,
-      description: req.body.description,
-    };
-    console.log(req.files); // devuelve un objeto con la información del archivo
-    res.send(product); //Aun Falta Guardar la información, pero guardada o no, lo redirijo a otra vista
-    //res.send("Archivo subido correctamente")
-    //res.redirect("index");
+   // console.log(req.file);
+    if (req.file) {
+      let product = req.body;
+      product.image = req.file.filename;
+
+      // gracias a multer, tengo file, y devuelve un objeto con la información del archivo
+      //res.send(product); //Aun Falta Guardar la información, pero guardada o no, lo redirijo a otra vista
+      //res.send("Archivo subido correctamente")
+      //res.redirect("index");
+      /*  {
+  name: req.file.name, // BODY O AHORA ES FILE O ES LO MISMO?
+  price: req.file.price,
+  discount: req.file.discount,
+  category: req.file.category,
+  description: req.file.description,
+}*/
+    } else {
+      res.status(200).render("product-create-form", { products: products });
+    }
   },
 
   // Update - Form to edit
