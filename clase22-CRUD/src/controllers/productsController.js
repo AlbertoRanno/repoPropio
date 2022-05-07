@@ -9,7 +9,7 @@ const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const controller = {
   // Root - Show all products
   index: (req, res) => {
-    res.status(200).render("products", { products: products });
+    res.status(200).render("products", { products, toThousand });
   },
 
   // Detail - Detail from one product
@@ -17,7 +17,9 @@ const controller = {
     let elDetallado = products.filter((product) => product.id == req.params.id);
     console.log(elDetallado);
 
-    res.status(200).render("detail", { elDetallado: elDetallado[0] });
+    res
+      .status(200)
+      .render("detail", { elDetallado: elDetallado[0], toThousand });
   },
 
   // Create - Form to create

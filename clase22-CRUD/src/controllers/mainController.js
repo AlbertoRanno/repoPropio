@@ -10,7 +10,7 @@ const controller = {
   index: (req, res) => {
     let inSale = products.filter((product) => product.category == "in-sale");
     let visited = products.filter((product) => product.category == "visited");
-    res.status(200).render("index", { inSale: inSale, visited: visited });
+    res.status(200).render("index", { inSale, visited, toThousand });
   },
   search: (req, res) => {
     let loQueBuscoElUsuario = req.query.keywords;
@@ -20,12 +20,10 @@ const controller = {
         productsResults.push(products[i]);
       } 
     }
-    res
-      .status(200)
-      .render("results", {
-        productsResults: productsResults[0],
-      
-      });
+    res.status(200).render("results", {
+      productsResults: productsResults[0],
+      toThousand,
+    });
   },
 };
 

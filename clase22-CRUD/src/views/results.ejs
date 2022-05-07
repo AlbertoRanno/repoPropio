@@ -27,7 +27,7 @@
                 />
               </figure>
               <article class="product-box_data">
-                <h2><%= productsResults.price %></h2>
+                <h2><%= toThousand(productsResults.price) %></h2>
                 <span><%= productsResults.discount %> % OFF</span>
                 <p><%= productsResults.name %></p>
                 <i class="fas fa-truck"></i>

@@ -26,7 +26,7 @@
 							<img src="/images/products/<%= visited[i].image %>" alt="imagen de producto">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= (visited[i].price - (visited[i].price*visited[i].discount/100)) %></h2>  <!--Final Price-->
+							<h2><%= toThousand(visited[i].price - (visited[i].price*visited[i].discount/100)) %></h2>  <!--Final Price-->
 							<span>
 								<% if (visited[i].discount !== 0) { %>
 								<%= visited[i].discount %> % OFF
@@ -57,8 +57,11 @@
 							<img src="/images/products/<%= inSale[i].image %>" alt="imagen de producto">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= inSale[i].price %></h2>
-							<span><%= inSale[i].discount %> % OFF </span>
+							<h2><%= toThousand(inSale[i].price - (inSale[i].price*inSale[i].discount/100)) %></h2>  <!--Final Price-->
+							<span>
+								<% if (inSale[i].discount !== 0) { %>
+								<%= inSale[i].discount %> % OFF
+							<% } %>    </span>
 							<p><%= inSale[i].name %></p>
 							<i class="fas fa-truck"></i>
 						</article>
