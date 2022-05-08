@@ -28,27 +28,36 @@ const controller = {
   },
 
   // Create -  Method to store
-  store: (req, res) => {
-   // console.log(req.file);
-    if (req.file) {
-      let product = req.body;
-      product.image = req.file.filename;
+  store: (req, res, next) => {
+    console.log(req.file);
+    if (!req.file) {
+      const error = new Error("Por favor seleccione un archivo");
+      error.httpStatusCode = 400;
+      return next(error);
+    }
+    //res.send(file);
+    res.redirect("index");
 
-      // gracias a multer, tengo file, y devuelve un objeto con la información del archivo
-      //res.send(product); //Aun Falta Guardar la información, pero guardada o no, lo redirijo a otra vista
-      //res.send("Archivo subido correctamente")
-      //res.redirect("index");
-      /*  {
+    //me carga las imagenes + un undefined... eso es porque aun no me guarda los datos???
+  },
+
+   
+  // if (req.file) { // esta es la validacion, puedo preguntar lo que quiera... en este caso solo pregunta si la imagen existe
+  // let product = req.body;
+  //product.image = req.file.filename;
+
+  //falta la parte del guardado de la info, que aun no la vimos (y en el video esta incluida)
+
+  // gracias a multer, tengo file, y devuelve un objeto con la información del archivo
+  //res.send(product); //Aun Falta Guardar la información, pero guardada o no, lo redirijo a otra vista
+  //res.send("Archivo subido correctamente")
+  /*  {
   name: req.file.name, // BODY O AHORA ES FILE O ES LO MISMO?
   price: req.file.price,
   discount: req.file.discount,
   category: req.file.category,
   description: req.file.description,
 }*/
-    } else {
-      res.status(200).render("product-create-form", { products: products });
-    }
-  },
 
   // Update - Form to edit
   edit: (req, res) => {
