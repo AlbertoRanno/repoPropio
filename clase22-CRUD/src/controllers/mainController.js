@@ -13,15 +13,17 @@ const controller = {
     res.status(200).render("index", { inSale, visited, toThousand });
   },
   search: (req, res) => {
-    let loQueBuscoElUsuario = req.query.keywords;
+    let loQueBuscoElUsuario = req.query.keywords.toLowerCase();
+    console.log(loQueBuscoElUsuario);
     let productsResults = [];
     for (let i = 0; i < products.length; i++) {
-      if (products[i].name.includes(loQueBuscoElUsuario)) {
+console.log("entró al FOR");
+      if (products[i].name.toLowerCase().includes(loQueBuscoElUsuario)) {
         productsResults.push(products[i]);
       } 
     }
     res.status(200).render("results", {
-      productsResults: productsResults[0],
+      productsResults: productsResults,
       toThousand,
     });
   },

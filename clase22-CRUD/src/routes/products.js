@@ -8,9 +8,9 @@ const multer = require("multer"); // RECORDAR: form con POST + enctype="multipar
 //enctype prepara al form para que envie información que es más que solo texto
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    // "cb" es un callback
+    // "cb" significa callback
     let folder = path.join(__dirname, "../../public/images/uploadProducts"); //__dirname da el punto de partida
-    cb(null, folder); //el primer parámetro es siempre NULL, el 2do, la carpeta que almacenará los archivos subidos
+    cb(null, folder); //el primer parámetro es siempre NULL (en realidad es ERROR, pero por ahora lo omitimos), el 2do, la carpeta que almacenará los archivos subidos
   }, // si no se proporciona destino, el Default es el de los archivos temporales
   filename: function (req, file, cb) {
     //el nombre que recibirá cada archivo, lo puedo armar como quiera
@@ -24,8 +24,20 @@ const uploadFile = multer({ storage }); //para poder implementarlo, se guarda en
 //notar que toma como argumento "storage", el objeto literal que guarda las configuraciones realizadas en el paso anterior
 //Obs! {storage: storage} === {storage}, para casos donde la propiedad tiene el mismo nombre que la variable
 
+/*Walter - lo mismo, pero Antes lo usamos como middleware, ahora declarado afuera, y directamente
+const upload = uploadFile.single('image');
+router.post('register', (req, res)=> {
+  upload (req,res, (err)=>{
+  if (err) {
+      res.status(400).send("Algo salió mal")
+  } else {res.send("ok")})
+})
+}*/
+
+
 // ************ Controller Require ************
 const productsController = require("../controllers/productsController");
+const { append } = require("express/lib/response");
 
 /*** GET ALL PRODUCTS ***/
 router.get("/", productsController.index);
