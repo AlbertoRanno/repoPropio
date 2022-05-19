@@ -29,19 +29,48 @@ const controller = {
 
   // Create -  Method to store
   store: (req, res, next) => {
-    console.log(req.file);
-    if (!req.file) {
+    var datosProducto = [];
+    function agregarDatosProducto(
+      id,
+      name,
+      description,
+      price,
+      discount,
+      image,
+      category
+    ) {
+      var nuevoProducto = {
+        id,
+        name,
+        description,
+        price,
+        discount,
+        image,
+        category,
+      };
+      console.log(nuevoProducto);
+      datosProducto.push(nuevoProducto);
+    }
+    function obtenerListadoProductos() {
+      return datosProducto
+    }
+  },
+
+  /*  console.log(req.file);
+fs.writeFileSync(productsFilePath, data);
+    res.redirect("index");
+  
+  
+  if (!req.file) {
       const error = new Error("Por favor seleccione un archivo");
       error.httpStatusCode = 400;
       return next(error);
     }
     //res.send(file);
-    res.redirect("index");
+   */
 
-    //me carga las imagenes + un undefined... eso es porque aun no me guarda los datos???
-  },
+  //me carga las imagenes + un undefined... eso es porque aun no me guarda los datos???
 
-   
   // if (req.file) { // esta es la validacion, puedo preguntar lo que quiera... en este caso solo pregunta si la imagen existe
   // let product = req.body;
   //product.image = req.file.filename;

@@ -38,7 +38,7 @@ const usersController = {
       edad: req.body.edad,
       email: req.body.email,
     };
-    //res.send(usuario) //Aun Falta Guardar la información, pero guardada o no, lo redirijo a la lista
+    res.send(usuario) //Aun Falta Guardar la información, pero guardada o no, lo redirijo a la lista
     res.redirect("/users/list");
   }, 
 };

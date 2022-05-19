@@ -6,6 +6,8 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+//const actions = require("../data/actions");
+
 const controller = {
   index: (req, res) => {
     let inSale = products.filter((product) => product.category == "in-sale");
@@ -17,13 +19,13 @@ const controller = {
     console.log(loQueBuscoElUsuario);
     let productsResults = [];
     for (let i = 0; i < products.length; i++) {
-console.log("entró al FOR");
+      console.log("entró al FOR");
       if (products[i].name.toLowerCase().includes(loQueBuscoElUsuario)) {
         productsResults.push(products[i]);
-      } 
+      }
     }
     res.status(200).render("results", {
-      productsResults: productsResults,
+      productsResults,
       toThousand,
     });
   },
