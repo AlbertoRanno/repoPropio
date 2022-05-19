@@ -6,8 +6,8 @@ const auth = require("../middlewares/auth");
 
 router.get("/login", usersController.login);
 
-router.post("/login", usersController.processLogin, auth.verificacion );
+router.post("/login", usersController.processLogin );
 
-router.get("/portal", usersController.portal);
+router.get("/portal", auth.verificacion, usersController.portal);
 
 module.exports = router;
