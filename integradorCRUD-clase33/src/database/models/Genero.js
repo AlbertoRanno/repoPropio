@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       // 1 a Muchos
       //un género, tiene muchas películas./ Le digo con que tabla se relaciona
       as: "peliculas", // un alias para llamar la relación,
-      foreignKey: "genre_id", // Cuál es la columna de la bbdd que une a éstas 2 tablas
+      foreignKey: "id", // Cuál es la columna de la bbdd que une a éstas 2 tablas
     });
   };
 
